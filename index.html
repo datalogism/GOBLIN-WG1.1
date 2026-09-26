@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KG Modelling Community Survey</title>
+<meta name="description" content="Methodologies, tools and practices for knowledge graph modelling: a community survey carried out within the GOBLIN COST Action (CA23147).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Platypi:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><b>GOBLIN</b><span>KG Modelling Survey</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#map">Map</a>
+      <a href="#why">Why</a>
+      <a href="#scope">Scope</a>
+      <a href="#participate">Take part</a>
+      <a href="#progress">Progress</a>
+      <a href="#method">Method</a>
+      <a class="nav-cta" href="#join">Join</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode">◐</button>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero">
+    <div class="hero-graph" aria-hidden="true">
+      <iframe src="map.html?hero" title="" tabindex="-1" loading="eager"></iframe>
+    </div>
+    <div class="wrap">
+      <p class="eyebrow">GOBLIN COST Action · WG1 Knowledge Graphs Engineering</p>
+      <h1>Methodologies, tools and practices for <em>KG modelling</em></h1>
+      <p class="lede">Every knowledge graph is built through the same stack (design, generation, validation,
+        evaluation, reuse), yet as a field we have never mapped where the real work happens, where methods overlap,
+        and where the frontier actually is. <strong>This community survey builds that map, together.</strong></p>
+      <div class="actions">
+        <a class="btn primary" href="https://forms.gle/an9aAGmsZqfTyU5V7" rel="noopener">Join the survey ↗</a>
+        <a class="btn" href="#map">Explore the map</a>
+        <a class="btn" href="#participate">How it works</a>
+      </div>
+      <dl class="keyfigs">
+        <div><dt data-bind="papers">–</dt><dd>works catalogued so far</dd></div>
+        <div><dt>5</dt><dd>clusters open to join (<span data-bind="libraries">10</span> sub-libraries)</dd></div>
+        <div><dt>~1h</dt><dd>a week, by design</dd></div>
+        <div><dt>6 months</dt><dd>from pilot to publication</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- ===================== MAP ===================== -->
+  <section class="alt" id="map">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">First map</p>
+        <h2>Resources and artefacts of KG modelling</h2>
+        <p>Every artefact a knowledge-graph effort produces or reuses, and how they feed one another. Click a node for
+          details, drag to pan, <kbd>Ctrl</kbd> + scroll to zoom, or <a href="map.html">open the map full screen</a>.</p>
+      </div>
+      <div class="map-frame">
+        <iframe src="map.html" title="Interactive map of the resources and artefacts of KG modelling" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY ===================== -->
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Why this survey</p>
+        <h2>We don't have a shared map of this space</h2>
+      </div>
+      <div class="two-col">
+        <div class="prose">
+          <p>Every knowledge graph and ontology is built through a complex process (design, documentation, generation,
+            transformation, validation, evaluation, migration, reuse) drawing on the whole Semantic Web stack: RML,
+            OWL, SPARQL and, more recently, SHACL. Many methodologies, quality metrics and tools have been proposed
+            along the way.</p>
+          <p>Yet we know our own tools, and those of our closest collaborators, but nobody has a comparative view of
+            the field, least of all of <strong>where human expertise actually does the work</strong> versus where it
+            is assumed, documented, or lost.</p>
+          <p>So we keep re-solving the same problems, and we cannot yet see where the research frontier is, or where
+            agentic and automated approaches should be pointed.</p>
+        </div>
+        <div class="panel">
+          <h3>Nobody has a comparative view of…</h3>
+          <ul class="ticks">
+            <li><b>Methodologies:</b> which cover which parts of the lifecycle, where they overlap or leave gaps.</li>
+            <li><b>Reuse:</b> how shapes, ODPs, modules, ontologies and thesauri are reused, adapted and versioned.</li>
+            <li><b>Documentation:</b> how design documentation survives (or not) creation, update and migration.</li>
+            <li><b>Validation:</b> whether reports and logs are connected back to design decisions.</li>
+            <li><b>Quality:</b> which metrics are used in practice, versus only proposed.</li>
+            <li><b>Tools:</b> what supports each task, and how well tools interoperate.</li>
+            <li><b>Co-dependence:</b> how a change to a shape, a mapping or a module ripples through the rest.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="sub">Why now</h3>
+      <div class="cards three">
+        <div class="card">
+          <h3>AI agents enter the workflow</h3>
+          <p>Where does the ontologist's judgment remain irreplaceable, and how can domain experts, users and
+            ontologists stay central rather than become an afterthought to the pipeline?</p>
+        </div>
+        <div class="card">
+          <h3>RDF 1.2 and SHACL 1.2 arrive</h3>
+          <p>New ways to represent, query and validate the very artefacts this lifecycle produces. A map drawn today
+            without them would already be out of date.</p>
+        </div>
+        <div class="card">
+          <h3>The connective tissue is missing</h3>
+          <p>The technologies are mature and the artefacts pile up in every project. What's missing is the link
+            between them, and that account can only be written collectively.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SCOPE ===================== -->
+  <section class="alt" id="scope">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Scope</p>
+        <h2>The lifecycle as a connected whole</h2>
+        <p>The survey is organised around the knowledge-engineering lifecycle, not as a set of isolated topics.</p>
+      </div>
+      <dl class="scope-list">
+        <div><dt>Methodologies</dt><dd>Ontology engineering, shape design, mapping design, and how they integrate.</dd></div>
+        <div><dt>Core technologies</dt><dd>OWL, SHACL, RML and SPARQL, as combined in practice, not only in specification.</dd></div>
+        <div><dt>Reusable building blocks</dt><dd>Shape libraries, ODPs, modules, domain ontologies and thesauri: publication, discovery, reuse.</dd></div>
+        <div><dt>Design-time documentation</dt><dd>Competency questions, requirements, pattern rationales, and their survival over time.</dd></div>
+        <div><dt>Cartography of validation</dt><dd>Validation reports, reasoner outputs, query results, transformation and migration logs as one trace.</dd></div>
+        <div><dt>Quality evaluation</dt><dd>Graph-based, ontology-focused and SHACL-assisted metrics, and how they are applied.</dd></div>
+        <div><dt>Tools and interfaces</dt><dd>Software and UIs supporting any of the above, mapped against the tasks they cover.</dd></div>
+        <div><dt>Co-dependence</dt><dd>How tasks and technologies interact: no part of the lifecycle can be evaluated in isolation.</dd></div>
+      </dl>
+
+      <details class="figure" id="coverage">
+        <summary>
+          <span><b>Clusters</b> · the five clusters the survey runs today, their sub-libraries with live item
+            counts, and examples of proposed clusters</span>
+        </summary>
+        <div class="tree-frame">
+          <iframe src="goblin-grid-tree.html" title="Clusters of the survey: current clusters and sub-libraries, and proposed clusters" loading="lazy"></iframe>
+        </div>
+        <p class="figure-note"><a href="goblin-grid-tree.html">Open the cluster tree on its own page</a></p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================== TAKE PART ===================== -->
+  <section id="participate">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Take part</p>
+        <h2>How it works for participants</h2>
+        <p>A small group, deliberately: researchers already active in some part of this space, willing to commit to
+          the annotation work, not just a co-author byline. Designed to fit alongside an existing research load.</p>
+      </div>
+      <div class="cards three ways">
+        <div class="card"><span class="tag">Option 1</span><h3>Join an existing cluster</h3>
+          <p>Shapes, Ontology &amp; methodology, Mapping, Quality or Surveys: pick the one closest to your work.</p></div>
+        <div class="card"><span class="tag">Option 2</span><h3>Propose a new cluster</h3>
+          <p>A topic the grid doesn't cover as its own cluster yet, e.g. SPARQL tooling, competency questions, OWL
+            profiles and reasoning.</p></div>
+        <div class="card"><span class="tag">Option 3</span><h3>Join the collective writing</h3>
+          <p>A cluster's synthesis, the cross-cutting gaps and frontier section, or general coordination.</p></div>
+      </div>
+      <div class="section-head" style="margin-top:40px">
+        <h3 class="sub" style="margin-top:0">Then, in each cluster</h3>
+      </div>
+      <ol class="steps">
+        <li><div><h3>Cluster set-up</h3><p>Members gather in their cluster; a proposed cluster gets its own
+          sub-library, collected with the survey pipeline.</p></div></li>
+        <li><div><h3>Grid validation</h3><p>Each cluster finalises the annotation fields for its own area; you're best
+          placed to judge your own sub-domain.</p></div></li>
+        <li><div><h3>First filter</h3><p>A quick relevance pass over the cluster's slice of the corpus, a few minutes
+          per paper.</p></div></li>
+        <li><div><h3>Annotation</h3><p>Retained papers get the full grid, with more than one annotator per entry so we
+          can measure agreement.</p></div></li>
+        <li><div><h3>Collective writing</h3><p>Each cluster drafts the synthesis for its area, then a joint editing
+          pass, open to members who joined for the writing phase.</p></div></li>
+      </ol>
+
+      <div class="commit">
+        <div>
+          <h3>Time commitment</h3>
+          <table class="commit-table">
+            <tr><th scope="row">Weekly commitment</th><td>~1 hour</td></tr>
+            <tr><th scope="row">Trial period</th><td>1 month (about 4 hours)</td></tr>
+            <tr><th scope="row">Full programme, if the cluster continues</th><td>up to 6 months</td></tr>
+            <tr><th scope="row">Scope</th><td>set after the trial, based on who stays</td></tr>
+          </table>
+        </div>
+        <div class="prose">
+          <p>The first month is a genuine trial: validating your cluster's grid and annotating a first handful of papers.
+            At the end of it, the cluster decides together how far its corpus extends.</p>
+          <p>As a rough guide, with around 20 people staying the course we can screen close to 2,000 papers and fully
+            annotate around 240. With fewer people, we scope down rather than stretch the same commitment thinner.
+            <strong>Nobody signs up for six months of uncertain scope on day one.</strong></p>
+        </div>
+      </div>
+
+      <h3 class="sub">What you get</h3>
+      <div class="cards three">
+        <div class="card">
+          <h3>Credit where it's due</h3>
+          <p>Substantial contributors are authors, with roles made visible through the
+            <a href="https://credit.niso.org/" rel="noopener">CRediT taxonomy</a>; smaller contributions are
+            acknowledged.</p>
+        </div>
+        <div class="card">
+          <h3>Open as it's produced</h3>
+          <p>The dataset, grid and annotations are released as they're produced under
+            <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>, with attribution to
+            the GOBLIN Community Survey.</p>
+        </div>
+        <div class="card">
+          <h3>GOBLIN backing</h3>
+          <p>Run across several universities and labs under the GOBLIN COST Action, while the daily work stays at the
+            scale of a working group.</p>
+        </div>
+      </div>
+      <blockquote class="pull">Reuse it, extend it, build on it: just cite and refer to the GOBLIN Community Survey.</blockquote>
+    </div>
+  </section>
+
+  <!-- ===================== PROGRESS ===================== -->
+  <section class="alt" id="progress">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Plan and progress</p>
+        <h2>Five phases, built collectively</h2>
+      </div>
+      <ol class="phases">
+        <li><b>Frame the space and gather the community</b><span>A crowdsourced first list of methodologies and tools,
+          reflecting the field as the group sees it, not one lab's view.</span></li>
+        <li><b>Define and validate the grid</b><span>Piloted on a shared set of papers to check it is usable and
+          consistent across annotators.</span></li>
+        <li><b>Collect and annotate</b><span>A structured, shared, checkable record of what each paper covers, claims
+          and demonstrates.</span></li>
+        <li><b>Assess advancement and gaps</b><span>Where the field has advanced, where claims outpace evidence, where
+          the lifecycle is weakly connected.</span></li>
+        <li><b>Identify the frontier</b><span>Research lines that follow from the gaps, notably agentic and automated
+          curation and validation.</span></li>
+      </ol>
+
+      <h3 class="sub">Where we are</h3>
+      <p class="muted-line">The annotation grid is being piloted (version 0.2). Figures computed live from the
+        <a href="https://www.zotero.org/groups/6610945/goblin-wg1.1_survey/library" rel="noopener">shared Zotero
+        library</a>: <span data-bind="status">loading…</span></p>
+      <div class="stats" id="stats">
+        <div class="stat"><div class="n" data-bind="papers">–</div><div class="l">papers in the shared library</div></div>
+        <div class="stat"><div class="n" data-bind="annotated">–</div><div class="l">papers annotated with the grid</div></div>
+        <div class="stat"><div class="n" data-bind="toCheck">–</div><div class="l">annotations awaiting review</div></div>
+        <div class="stat"><div class="n" data-bind="years">–</div><div class="l">years of literature covered</div></div>
+        <div class="stat"><div class="n" data-bind="M">–</div><div class="l">methodologies identified</div></div>
+        <div class="stat"><div class="n" data-bind="R">–</div><div class="l">resources and pattern libraries</div></div>
+        <div class="stat"><div class="n" data-bind="Q">–</div><div class="l">quality assessment methods</div></div>
+        <div class="stat"><div class="n" data-bind="T">–</div><div class="l">tools identified</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== METHOD ===================== -->
+  <section id="method">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Systematic methodology</p>
+        <h2>A systematic review, built collectively and extended on demand</h2>
+        <p>The literature is collected, screened and annotated with
+          <a href="https://github.com/datalogism/SciLEx" rel="noopener">SciLEx</a>, an open-source Python toolbox for
+          systematic reviews. Every step leaves a trace in the shared Zotero library, so any annotation can be traced
+          back to its paper, questioned and corrected.</p>
+      </div>
+
+      <ul class="principles">
+        <li><b>Explicit queries</b> Keyword sets, sources and year ranges are written down, not typed ad hoc.</li>
+        <li><b>Documented screening</b> Relevance, quality and citation scores are recorded on each paper.</li>
+        <li><b>Reproducible pipeline</b> Collection, deduplication, enrichment and annotation are scripted and re-runnable.</li>
+        <li><b>Reviewed annotations</b> Closed vocabularies, agreement between annotators, a flag on anything still to check.</li>
+      </ul>
+
+      <ol class="pipeline" aria-label="Survey pipeline">
+        <li><span class="k">1 · Collect</span><b>Query scholarly APIs</b>
+          <p>Semantic Scholar, OpenAlex, DBLP, arXiv, HAL, IEEE, Springer, Elsevier, Istex, plus existing surveys.</p></li>
+        <li><span class="k">2 · Screen</span><b>Merge and screen</b>
+          <p>Deduplicated, screened on title and abstract, scores recorded, DOIs resolved.</p></li>
+        <li><span class="k">3 · Curate</span><b>Shared library</b>
+          <p>Relevant papers filed by theme in the <a href="https://www.zotero.org/groups/goblin-wg1.1_survey" rel="noopener">Zotero group</a>.</p></li>
+        <li><span class="k">4 · Enrich</span><b>Metadata and citations</b>
+          <p>Missing metadata from OpenAlex and Crossref; the corpus grows along citations.</p></li>
+        <li><span class="k">5 · Annotate</span><b>The annotation grid</b>
+          <p>Annotations are written back to Zotero as tags and notes; agreement is measured.</p></li>
+        <li><span class="k">6 · Analyse</span><b>Advances and gaps</b>
+          <p>Annotations are queried across the corpus to compare and locate gaps.</p></li>
+      </ol>
+
+      <div class="extend">
+        <div>
+          <p class="eyebrow">A living survey</p>
+          <h3>New clusters, on demand</h3>
+          <p>When a member proposes a new cluster (SHACL 1.2 and RDF 1.2 artefacts, agentic curation, validation
+            reports, an application domain…), the same pipeline runs again with a focused query: the papers land in a
+            new sub-library and are annotated with the same grid.</p>
+          <p>Examples of proposed clusters: SPARQL, competency questions and OWL depth, shown in the
+            <a href="#coverage">cluster tree</a>.</p>
+        </div>
+        <ol class="extend-steps">
+          <li><b>Propose a cluster</b><span>scope, keywords, years, sources</span></li>
+          <li><b>Collect with SciLEx</b><span>new query, same pipeline</span></li>
+          <li><b>Open a sub-library</b><span>deduplicated against the corpus</span></li>
+          <li><b>Annotate with the grid</b><span>same tables and vocabularies</span></li>
+          <li><b>Compare</b><span>the cluster against the whole map</span></li>
+        </ol>
+      </div>
+
+      <h3 class="sub">The annotation grid</h3>
+      <p class="muted-line">Each paper describes one or more <em>entities</em>, recorded in four tables. Fields use
+        closed vocabularies, and entries link to the ones they extend, implement or reuse, so the grid reads as a
+        connected graph, not a spreadsheet.</p>
+      <div class="cards four">
+        <div class="card"><span class="tag">Table A</span><h3>Methodologies</h3>
+          <p>Process paradigm, lifecycle phases, actors, role of LLMs, formalisms, validation, tooling.</p>
+          <span class="count" data-table="M"></span></div>
+        <div class="card"><span class="tag">Table B</span><h3>Resources</h3>
+          <p>Libraries of patterns, shapes, modules and ontologies: origin, formalism, link with shapes, access.</p>
+          <span class="count" data-table="R"></span></div>
+        <div class="card"><span class="tag">Table C</span><h3>Quality methods</h3>
+          <p>Contribution type, target level, quality dimensions, formalism evaluated, implementing tools.</p>
+          <span class="count" data-table="Q"></span></div>
+        <div class="card"><span class="tag">Table D</span><h3>Tools</h3>
+          <p>Category, languages, interface, editing style, import and export, licence, access status.</p>
+          <span class="count" data-table="T"></span></div>
+      </div>
+
+      <details class="more">
+        <summary>For annotators: how annotations are stored in Zotero</summary>
+        <div class="prose">
+          <p>A field value becomes a tag such as <code>KE_LANGUAGES:SHACL</code>, the entity a paper describes becomes
+            <code>KE_ID:T:Protege</code>, and relations become links such as <code>LINK_usesTool:T:Protege</code>.
+            Drafted or uncertain annotations carry <code>WF_ToCheck</code> until a second annotator has reviewed them.</p>
+        </div>
+      </details>
+
+      <p class="cite">SciLEx: C. Ringwald, <em>Learning Pattern-Based Extractors from Natural Language and Knowledge
+        Graphs: Applying Large Language Models to Wikipedia and Linked Open Data</em>, AAAI-24, pp. 23411–23412,
+        <a href="https://doi.org/10.1609/aaai.v38i21.30406" rel="noopener">doi:10.1609/aaai.v38i21.30406</a> ·
+        <a href="https://github.com/datalogism/SciLEx" rel="noopener">github.com/datalogism/SciLEx</a> (MIT licence).</p>
+    </div>
+  </section>
+
+  <!-- ===================== JOIN ===================== -->
+  <section class="cta" id="join">
+    <div class="wrap">
+      <p class="eyebrow">Get involved</p>
+      <h2>Help build it, don't just react to it once it's written</h2>
+      <p class="lede">The sign-up form takes two minutes: join an existing cluster, propose a new one, or join the
+        collective writing, and we'll add you to the first month's trial. Not sure yet? Say so in the form, we'll help
+        you figure it out, and you can invite colleagues from your lab too.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://forms.gle/an9aAGmsZqfTyU5V7" rel="noopener">Sign up in the form ↗</a>
+        <a class="btn" href="https://www.zotero.org/groups/goblin-wg1.1_survey" rel="noopener">Browse the Zotero library ↗</a>
+        <a class="btn" href="https://goblin-cost.eu/about/join/" rel="noopener">Join GOBLIN ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div><strong>GOBLIN</strong> – Global Network on Large-Scale, Cross-domain and Multilingual Open Knowledge Graphs,
+      <a href="https://www.cost.eu/actions/CA23147/" rel="noopener">COST Action CA23147</a> ·
+      <a href="https://goblin-cost.eu/" rel="noopener">goblin-cost.eu</a></div>
+    <div>Community survey of <a href="https://goblin-cost.eu/collaboration/working-groups/" rel="noopener">WG1</a> ·
+      Knowledge Graphs Engineering</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+  // Links to #coverage open the collapsed cluster tree before scrolling to it.
+  const coverage = document.getElementById("coverage");
+  function openCoverage() { if (location.hash === "#coverage") coverage.open = true; }
+  window.addEventListener("hashchange", openCoverage);
+  openCoverage();
+  document.querySelectorAll('a[href="#coverage"]').forEach(a => a.addEventListener("click", () => { coverage.open = true; }));
+
+  // The embedded cluster tree reports its height so the frame fits it without an inner scrollbar.
+  window.addEventListener("message", e => {
+    const h = e.data && e.data.gridTreeHeight;
+    const frame = document.querySelector(".tree-frame iframe");
+    if (h && frame && e.source === frame.contentWindow) frame.style.height = `${Math.ceil(h)}px`;
+  });
+
+  // Survey figures, computed in the browser from the public Zotero group library (the site's only data source).
+  (async function () {
+    const GROUP = "https://api.zotero.org/groups/6610945";
+    const HEADERS = { headers: { "Zotero-API-Version": "3" } };
+    const NON_PAPERS = new Set(["computerProgram", "webpage"]);
+    const bind = (key, value) => document.querySelectorAll(`[data-bind="${key}"]`).forEach(el => { el.textContent = value; });
+
+    fetch(`${GROUP}/collections?limit=100`, HEADERS)
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(c => bind("libraries", c.length))
+      .catch(() => {});
+
+    try {
+      const page = async start => {
+        const resp = await fetch(`${GROUP}/items/top?format=json&limit=100&start=${start}`, HEADERS);
+        if (!resp.ok) throw new Error(`Zotero API ${resp.status}`);
+        return { total: Number(resp.headers.get("Total-Results")), items: await resp.json() };
+      };
+      const first = await page(0);  // gives the total, the other pages are then read in parallel
+      const starts = [];
+      for (let start = 100; start < first.total; start += 100) starts.push(start);
+      const items = [...first.items, ...(await Promise.all(starts.map(page))).flatMap(p => p.items)];
+      const papers = items.filter(i => !NON_PAPERS.has(i.data.itemType));
+      const years = papers.map(i => (i.data.date || "").match(/(19|20)\d{2}/)).filter(Boolean).map(m => Number(m[0]));
+      const entities = { M: new Set(), R: new Set(), Q: new Set(), T: new Set() };
+      let annotated = 0, toCheck = 0;
+      items.forEach(i => {
+        const tags = i.data.tags.map(t => t.tag);
+        const ids = tags.filter(t => t.startsWith("KE_ID:"));
+        ids.forEach(t => { const [, type, name] = t.split(":"); entities[type]?.add(name); });
+        if (ids.length && !NON_PAPERS.has(i.data.itemType)) annotated += 1;
+        if (tags.includes("WF_ToCheck")) toCheck += 1;
+      });
+      bind("papers", papers.length);
+      bind("annotated", annotated);
+      bind("toCheck", toCheck);
+      Object.entries(entities).forEach(([type, set]) => bind(type, set.size));
+      bind("years", years.length ? `${Math.min(...years)}–${Math.max(...years)}` : "–");
+      bind("status", `${items.length} items read on ${new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}.`);
+      document.querySelectorAll("[data-table]").forEach(el => {
+        const n = entities[el.dataset.table]?.size;
+        if (n !== undefined) el.textContent = `${n} entities identified so far`;
+      });
+    } catch (err) {
+      bind("status", "the library could not be reached, please reload the page later.");
+    }
+  })();
+</script>
+</body>
+</html>

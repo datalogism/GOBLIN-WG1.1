@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Survey Clusters</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Platypi:wght@600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #1C1A16;
+    --muted: #6B675D;
+    --hairline: #E3E0D8;
+    --line: #B9B2A0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14181F; --text: #E9EDF3; --muted: #939CAA; --hairline: #2B3240; --line: #3A4351;
+    }
+  }
+  :root[data-theme="dark"] { --bg: #14181F; --text: #E9EDF3; --muted: #939CAA; --hairline: #2B3240; --line: #3A4351; }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+  body { padding: env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px); }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 40px 24px 64px; }
+  h1 { font-family: 'Platypi', Georgia, serif; font-weight: 600; font-size: clamp(22px, 3vw, 30px); margin: 0 0 6px; }
+  .lede { color: var(--muted); font-size: 14px; max-width: 62ch; line-height: 1.6; margin: 0 0 30px; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 28px; font-size: 12.5px; color: var(--muted); }
+  .legend .row { display: flex; align-items: center; gap: 7px; }
+  .legend .sw { width: 13px; height: 13px; border-radius: 3px; flex: none; }
+  .legend .sw.dashed { background: transparent; border: 1.5px dashed var(--muted); }
+
+  svg#tree { width: 100%; height: auto; display: block; }
+  text { font-family: 'IBM Plex Sans', sans-serif; }
+  .title { font-weight: 600; }
+  .title.mono { font-family: 'IBM Plex Mono', monospace; font-weight: 500; }
+  .subtitle { fill: var(--muted); font-weight: 400; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em; fill: var(--muted); }
+  .conn { fill: none; stroke: var(--line); stroke-width: 1.4; }
+  .count { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 500; }
+  .source { font-size: 12.5px; color: var(--muted); margin: 18px 0 0; }
+  .source a, .back { color: #a11037; }
+  .back { display: inline-block; margin-bottom: 14px; font-size: 13px; font-weight: 600; text-decoration: none; }
+  .back:hover { text-decoration: underline; }
+  .embedded .back, .embedded h1 { display: none; }
+  .embedded .wrap { padding: 20px 20px 24px; }
+  .embedded, .embedded body { overflow: hidden; }
+  .divider { stroke: var(--hairline); stroke-width: 1; stroke-dasharray: 4 5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← Community survey</a>
+  <h1>GOBLIN Community Survey — clusters</h1>
+  <p class="lede">The five clusters members can join today, each with its sub-libraries in the shared Zotero library, and examples of proposed clusters — topics the grid does not annotate on their own terms yet: SPARQL, competency questions, and OWL beyond a single formalism tag.</p>
+
+  <div class="legend">
+    <div class="row"><span class="sw" style="background:#DCEEE9;border:1px solid #1F6F5C"></span>Shapes (largest cluster)</div>
+    <div class="row"><span class="sw" style="background:#E1E4F2;border:1px solid #33447A"></span>Ontology &amp; methodology</div>
+    <div class="row"><span class="sw" style="background:#F5E9D2;border:1px solid #96690A"></span>Mapping</div>
+    <div class="row"><span class="sw" style="background:#EFE0EC;border:1px solid #6B3E63"></span>Quality</div>
+    <div class="row"><span class="sw" style="background:#EAE7DE;border:1px solid #6B655A"></span>Surveys</div>
+    <div class="row"><span class="sw dashed"></span>Proposed cluster — open to a new team</div>
+  </div>
+
+  <svg id="tree" viewBox="0 0 1180 1478" role="img">
+    <title>Tree diagram of the GOBLIN annotation grid's current clusters and sub-libraries, and three proposed clusters</title>
+    <desc>Root node for the GOBLIN WG1.1 survey branches into five current clusters — Shapes with three sub-libraries, Ontology and Methodology with three, Mapping with two, plus the single-library Quality and Surveys clusters — and, below a dashed divider, three proposed clusters not yet covered by a sub-library: SPARQL, Competency Questions, and OWL depth, each with two example directions.</desc>
+
+    <!-- section labels -->
+    <text class="section-label" x="330" y="45">CURRENT CLUSTERS</text>
+    <text class="section-label" x="330" y="912">PROPOSED CLUSTERS (EXAMPLES)</text>
+    <line class="divider" x1="40" y1="890" x2="1140" y2="890"/>
+
+    <!-- connectors: root to clusters -->
+    <g id="root-links"></g>
+    <g id="cluster-links"></g>
+
+    <!-- ROOT -->
+    <g>
+      <rect x="40" y="737" width="250" height="90" rx="10" fill="none" stroke="var(--text)" stroke-width="1.4"/>
+      <text class="title" x="165" y="770" text-anchor="middle" font-size="16" fill="var(--text)">GOBLIN WG1.1</text>
+      <text class="title" x="165" y="790" text-anchor="middle" font-size="16" fill="var(--text)">survey</text>
+      <text class="subtitle" x="165" y="811" text-anchor="middle" font-size="11.5">5 clusters, 10 sub-libraries</text>
+    </g>
+
+    <!-- CLUSTER: Shapes -->
+    <g>
+      <rect x="330" y="140" width="230" height="56" rx="9" fill="#DCEEE9" stroke="#1F6F5C" stroke-width="1.6"/>
+      <text class="title" x="445" y="163" text-anchor="middle" font-size="15" fill="#0F4438">Shapes</text>
+      <text class="subtitle" x="445" y="181" text-anchor="middle" font-size="11.5" fill="#1F6F5C">Largest cluster today</text>
+    </g>
+    <g fill="#DCEEE9" stroke="#1F6F5C">
+      <rect x="610" y="70"  width="280" height="56" rx="9" stroke-width="1.2"/>
+      <rect x="610" y="140" width="280" height="56" rx="9" stroke-width="1.2"/>
+      <rect x="610" y="210" width="280" height="56" rx="9" stroke-width="1.2"/>
+    </g>
+    <text class="title" x="750" y="93" text-anchor="middle" font-size="14.5" fill="#0F4438">ShapeKE</text>
+    <text class="subtitle" x="750" y="111" text-anchor="middle" font-size="11.5" fill="#1F6F5C">Shape design approaches</text>
+    <text class="title" x="750" y="163" text-anchor="middle" font-size="14.5" fill="#0F4438">ShapesTools</text>
+    <text class="subtitle" x="750" y="181" text-anchor="middle" font-size="11.5" fill="#1F6F5C">Extractors, validators, editors</text>
+    <text class="title" x="750" y="233" text-anchor="middle" font-size="14.5" fill="#0F4438">ShapeUsages</text>
+    <text class="subtitle" x="750" y="251" text-anchor="middle" font-size="11.5" fill="#1F6F5C">Use cases building shapes</text>
+
+    <!-- CLUSTER: Ontology & Methodology -->
+    <g>
+      <rect x="330" y="372" width="230" height="56" rx="9" fill="#E1E4F2" stroke="#33447A" stroke-width="1.6"/>
+      <text class="title" x="445" y="395" text-anchor="middle" font-size="15" fill="#232F5C">Ontology &amp; method.</text>
+      <text class="subtitle" x="445" y="413" text-anchor="middle" font-size="11.5" fill="#33447A">Modelling process &amp; reuse</text>
+    </g>
+    <g fill="#E1E4F2" stroke="#33447A">
+      <rect x="610" y="302" width="280" height="56" rx="9" stroke-width="1.2"/>
+      <rect x="610" y="372" width="280" height="56" rx="9" stroke-width="1.2"/>
+      <rect x="610" y="442" width="280" height="56" rx="9" stroke-width="1.2"/>
+    </g>
+    <text class="title" x="750" y="325" text-anchor="middle" font-size="14.5" fill="#232F5C">Methodology</text>
+    <text class="subtitle" x="750" y="343" text-anchor="middle" font-size="11.5" fill="#33447A">NeOn, XD, SAMOD, LOT…</text>
+    <text class="title" x="750" y="395" text-anchor="middle" font-size="14.5" fill="#232F5C">OntologyLibraries</text>
+    <text class="subtitle" x="750" y="413" text-anchor="middle" font-size="11.5" fill="#33447A">ODPs, modules, thesauri</text>
+    <text class="title" x="750" y="465" text-anchor="middle" font-size="14.5" fill="#232F5C">Tools</text>
+    <text class="subtitle" x="750" y="483" text-anchor="middle" font-size="11.5" fill="#33447A">Editors, reasoners, platforms</text>
+
+    <!-- CLUSTER: Mapping -->
+    <g>
+      <rect x="330" y="569" width="230" height="56" rx="9" fill="#F5E9D2" stroke="#96690A" stroke-width="1.6"/>
+      <text class="title" x="445" y="592" text-anchor="middle" font-size="15" fill="#5C3F06">Mapping</text>
+      <text class="subtitle" x="445" y="610" text-anchor="middle" font-size="11.5" fill="#96690A">Data into RDF</text>
+    </g>
+    <g fill="#F5E9D2" stroke="#96690A">
+      <rect x="610" y="534" width="280" height="56" rx="9" stroke-width="1.2"/>
+      <rect x="610" y="604" width="280" height="56" rx="9" stroke-width="1.2"/>
+    </g>
+    <text class="title" x="750" y="557" text-anchor="middle" font-size="14.5" fill="#5C3F06">Mappings</text>
+    <text class="subtitle" x="750" y="575" text-anchor="middle" font-size="11.5" fill="#96690A">R2RML, RML, YARRRML…</text>
+    <text class="title" x="750" y="627" text-anchor="middle" font-size="14.5" fill="#5C3F06">MappingTools</text>
+    <text class="subtitle" x="750" y="645" text-anchor="middle" font-size="11.5" fill="#96690A">Engines &amp; generators</text>
+
+    <!-- DIRECT LEAF: Quality -->
+    <g fill="#EFE0EC" stroke="#6B3E63">
+      <rect x="330" y="696" width="230" height="56" rx="9" stroke-width="1.4"/>
+    </g>
+    <text class="title" x="445" y="719" text-anchor="middle" font-size="15" fill="#4A2A45">Quality</text>
+    <text class="subtitle" x="445" y="737" text-anchor="middle" font-size="11.5" fill="#6B3E63">Metrics, SHACL-linked</text>
+
+    <!-- DIRECT LEAF: Surveys -->
+    <g fill="#EAE7DE" stroke="#6B655A">
+      <rect x="330" y="788" width="230" height="56" rx="9" stroke-width="1.4"/>
+    </g>
+    <text class="title" x="445" y="811" text-anchor="middle" font-size="15" fill="#3F3B33">Surveys</text>
+    <text class="subtitle" x="445" y="829" text-anchor="middle" font-size="11.5" fill="#6B655A">Prior reviews, positioning</text>
+
+    <!-- CLUSTER: SPARQL (potential) -->
+    <g>
+      <rect x="330" y="958" width="230" height="56" rx="9" fill="none" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="6 5"/>
+      <text class="title" x="445" y="981" text-anchor="middle" font-size="15" fill="var(--text)">SPARQL</text>
+      <text class="subtitle" x="445" y="999" text-anchor="middle" font-size="11.5">Proposed cluster</text>
+    </g>
+    <g fill="none" stroke="var(--muted)" stroke-dasharray="6 5">
+      <rect x="610" y="958"  width="280" height="56" rx="9" stroke-width="1.1"/>
+      <rect x="610" y="1028" width="280" height="56" rx="9" stroke-width="1.1"/>
+    </g>
+    <text class="title" x="750" y="981" text-anchor="middle" font-size="14.5">Query design &amp; patterns</text>
+    <text class="subtitle" x="750" y="999" text-anchor="middle" font-size="11.5">Federation, optimisation</text>
+    <text class="title" x="750" y="1051" text-anchor="middle" font-size="14.5">Query benchmarking</text>
+    <text class="subtitle" x="750" y="1069" text-anchor="middle" font-size="11.5">Performance, correctness</text>
+
+    <!-- CLUSTER: Competency Questions (potential) -->
+    <g>
+      <rect x="330" y="1120" width="230" height="56" rx="9" fill="none" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="6 5"/>
+      <text class="title" x="445" y="1143" text-anchor="middle" font-size="14.5" fill="var(--text)">Competency questions</text>
+      <text class="subtitle" x="445" y="1161" text-anchor="middle" font-size="11.5">Proposed cluster (a field today)</text>
+    </g>
+    <g fill="none" stroke="var(--muted)" stroke-dasharray="6 5">
+      <rect x="610" y="1120" width="280" height="56" rx="9" stroke-width="1.1"/>
+      <rect x="610" y="1190" width="280" height="56" rx="9" stroke-width="1.1"/>
+    </g>
+    <text class="title" x="750" y="1143" text-anchor="middle" font-size="14.5">CQ elicitation methods</text>
+    <text class="subtitle" x="750" y="1161" text-anchor="middle" font-size="11.5">Requirements engineering</text>
+    <text class="title" x="750" y="1213" text-anchor="middle" font-size="14.5">CQ → SPARQL / testing</text>
+    <text class="subtitle" x="750" y="1231" text-anchor="middle" font-size="11.5">Executable validation</text>
+
+    <!-- CLUSTER: OWL depth (potential) -->
+    <g>
+      <rect x="330" y="1317" width="230" height="56" rx="9" fill="none" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="6 5"/>
+      <text class="title" x="445" y="1340" text-anchor="middle" font-size="15" fill="var(--text)">OWL depth</text>
+      <text class="subtitle" x="445" y="1358" text-anchor="middle" font-size="11.5">Proposed cluster</text>
+    </g>
+    <g fill="none" stroke="var(--muted)" stroke-dasharray="6 5">
+      <rect x="610" y="1282" width="280" height="56" rx="9" stroke-width="1.1"/>
+      <rect x="610" y="1352" width="280" height="56" rx="9" stroke-width="1.1"/>
+    </g>
+    <text class="title" x="750" y="1305" text-anchor="middle" font-size="14.5">OWL profiles &amp; reasoning</text>
+    <text class="subtitle" x="750" y="1323" text-anchor="middle" font-size="11.5">EL, QL, RL; reasoners</text>
+    <text class="title" x="750" y="1375" text-anchor="middle" font-size="14.5">Ontology alignment</text>
+    <text class="subtitle" x="750" y="1393" text-anchor="middle" font-size="11.5">Matching &amp; mapping onto</text>
+    <g id="counts"></g>
+  </svg>
+  <p class="source" id="source">Item counts are read live from the
+    <a href="https://www.zotero.org/groups/6610945/goblin-wg1.1_survey/library" rel="noopener">shared Zotero library</a>.</p>
+</div>
+
+<script>
+if (window.self !== window.top) document.documentElement.classList.add("embedded");
+
+// Live item count of each sub-library (Zotero collection), written at the right edge of its box.
+(async function(){
+  const BOXES = {  // collection name -> right edge x, box top y
+    ShapeKE: [890, 70], ShapesTools: [890, 140], ShapeUsages: [890, 210],
+    Methodology: [890, 302], OntologyLibraries: [890, 372], Tools: [890, 442],
+    Mappings: [890, 534], MappingTools: [890, 604], Quality: [560, 696], Surveys: [560, 788],
+  };
+  const layer = document.getElementById("counts");
+  try {
+    const resp = await fetch("https://api.zotero.org/groups/6610945/collections?limit=100",
+                             { headers: { "Zotero-API-Version": "3" } });
+    if (!resp.ok) throw new Error(resp.status);
+    const collections = await resp.json();
+    collections.forEach(c => {
+      const box = BOXES[c.data.name];
+      if (!box) return;
+      const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      t.setAttribute("class", "count");
+      t.setAttribute("x", box[0] - 12);
+      t.setAttribute("y", box[1] + 17);
+      t.setAttribute("text-anchor", "end");
+      t.setAttribute("fill", "#6B675D");
+      t.textContent = `${c.meta.numItems} items`;
+      layer.appendChild(t);
+    });
+    const root = document.querySelector("#tree .subtitle");
+    if (root) root.textContent = `5 clusters, ${collections.length} sub-libraries`;
+  } catch (err) {
+    document.getElementById("source").textContent = "Item counts unavailable: the Zotero library could not be reached.";
+  }
+  reportHeight();
+})();
+
+// When embedded in the survey home page, tell the parent our height (it changes with the width).
+function reportHeight() {
+  if (window.self !== window.top) window.parent.postMessage({ gridTreeHeight: document.documentElement.scrollHeight }, "*");
+}
+window.addEventListener("resize", reportHeight);
+
+(function(){
+  const rootLinks = document.getElementById("root-links");
+  const clusterLinks = document.getElementById("cluster-links");
+  const ROOT = { x: 290, y: 782 };
+  const clusters = [
+    { x: 330, y: 168, direct:false },
+    { x: 330, y: 400, direct:false },
+    { x: 330, y: 597, direct:false },
+    { x: 330, y: 724, direct:true },
+    { x: 330, y: 816, direct:true },
+    { x: 330, y: 986, direct:false },
+    { x: 330, y: 1148, direct:false },
+    { x: 330, y: 1345, direct:false },
+  ];
+  function elbow(x1,y1,x2,y2,midX){
+    return `M${x1},${y1} L${midX},${y1} L${midX},${y2} L${x2},${y2}`;
+  }
+  clusters.forEach(c => {
+    const p = document.createElementNS("http://www.w3.org/2000/svg","path");
+    p.setAttribute("class","conn");
+    p.setAttribute("d", elbow(ROOT.x, ROOT.y, c.x, c.y, ROOT.x + 20));
+    rootLinks.appendChild(p);
+  });
+  const leafGroups = [
+    { cx: 560, cy: 168, leaves: [98, 168, 238] },
+    { cx: 560, cy: 400, leaves: [330, 400, 470] },
+    { cx: 560, cy: 597, leaves: [562, 632] },
+    { cx: 560, cy: 986, leaves: [986, 1056] },
+    { cx: 560, cy: 1148, leaves: [1148, 1218] },
+    { cx: 560, cy: 1345, leaves: [1310, 1380] },
+  ];
+  leafGroups.forEach(g => {
+    g.leaves.forEach(ly => {
+      const p = document.createElementNS("http://www.w3.org/2000/svg","path");
+      p.setAttribute("class","conn");
+      p.setAttribute("d", elbow(g.cx, g.cy, 610, ly, g.cx + 20));
+      clusterLinks.appendChild(p);
+    });
+  });
+})();
+</script>
+</body>
+</html>
